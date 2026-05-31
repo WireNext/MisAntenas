@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AntenaMap — Gestión de Cobertura Móvil</title>
+
+  <!-- Leaflet.js: librería de mapas interactivos (CDN gratuita) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Hoja de estilos propia -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =============================================
+       CABECERA SUPERIOR
+  ============================================= -->
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="header-icon">📡</span>
+      <span class="header-title">AntenaMap</span>
+      <span class="header-sub">Gestión de Cobertura Móvil</span>
+    </div>
+    <div class="header-actions">
+      <!-- Botón exportar JSON -->
+      <button id="btn-exportar" class="btn btn-export" title="Exportar antenas a JSON">
+        <span class="btn-icon">⬇</span> Exportar JSON
+      </button>
+      <!-- Input oculto para cargar JSON -->
+      <label for="input-cargar" class="btn btn-load" title="Cargar antenas desde JSON">
+        <span class="btn-icon">⬆</span> Cargar JSON
+      </label>
+      <input type="file" id="input-cargar" accept=".json" style="display:none;" />
+    </div>
+  </header>
+
+  <!-- =============================================
+       CONTENEDOR PRINCIPAL: mapa + panel lateral
+  ============================================= -->
+  <main class="app-body">
+
+    <!-- Mapa Leaflet (ocupa el fondo) -->
+    <div id="mapa"></div>
+
+    <!-- Panel lateral flotante con formulario -->
+    <aside class="panel" id="panel-lateral">
+
+      <!-- Cabecera del panel -->
+      <div class="panel-header">
+        <h2 class="panel-title">Nueva Antena</h2>
+        <p class="panel-hint">Haz clic en el mapa para capturar coordenadas</p>
+      </div>
+
+      <!-- ---- FORMULARIO ---- -->
+      <form id="form-antena" class="form" autocomplete="off" onsubmit="return false;">
+
+        <!-- Nombre -->
+        <div class="field-group">
+          <label class="field-label" for="nombre">Nombre de la antena</label>
+          <input
+            type="text"
+            id="nombre"
+            class="field-input"
+            placeholder="Ej: Torre Norte — 4G"
+            required
+          />
+        </div>
+
+        <!-- Latitud y Longitud en fila -->
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="lat">Latitud</label>
+            <input
+              type="number"
+              id="lat"
+              class="field-input"
+              placeholder="40.4168"
+              step="any"
+              required
+            />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="lng">Longitud</label>
+            <input
+              type="number"
+              id="lng"
+              class="field-input"
+              placeholder="-3.7038"
+              step="any"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Radio de alcance -->
+        <div class="field-group">
+          <label class="field-label" for="radio">Radio de alcance (metros)</label>
+          <input
+            type="number"
+            id="radio"
+            class="field-input"
+            placeholder="Ej: 1500"
+            min="1"
+            required
+          />
+        </div>
+
+        <!-- =============================================
+             DESPLEGABLE MULTIOPCIÓN DE BANDAS/FRECUENCIAS
+        ============================================= -->
+        <div class="field-group">
+          <label class="field-label">Bandas / Frecuencias</label>
+
+          <!-- Trigger visible del desplegable -->
+          <div class="multiselect" id="multiselect-bandas">
+            <div class="multiselect-trigger" id="multiselect-trigger" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+              <span class="multiselect-text" id="multiselect-text">Seleccionar bandas...</span>
+              <span class="multiselect-arrow" id="multiselect-arrow">▾</span>
+            </div>
+
+            <!-- Menú desplegable con checkboxes -->
+            <div class="multiselect-dropdown" id="multiselect-dropdown" role="listbox" aria-multiselectable="true">
+              <!-- Cada opción de frecuencia -->
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="700 MHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">700 MHz</span>
+                <span class="option-badge">4G</span>
+              </label>
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="800 MHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">800 MHz</span>
+                <span class="option-badge">4G</span>
+              </label>
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="900 MHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">900 MHz</span>
+                <span class="option-badge">2G/3G</span>
+              </label>
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="1800 MHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">1800 MHz</span>
+                <span class="option-badge">2G/4G</span>
+              </label>
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="2100 MHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">2100 MHz</span>
+                <span class="option-badge">3G/4G</span>
+              </label>
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="2600 MHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">2600 MHz</span>
+                <span class="option-badge">4G</span>
+              </label>
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="3500 MHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">3500 MHz</span>
+                <span class="option-badge">5G</span>
+              </label>
+              <label class="multiselect-option">
+                <input type="checkbox" class="banda-check" value="26 GHz" />
+                <span class="check-mark"></span>
+                <span class="option-label">26 GHz</span>
+                <span class="option-badge">5G mmW</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón añadir antena -->
+        <button type="button" id="btn-agregar" class="btn btn-primary btn-full">
+          <span class="btn-icon">＋</span> Añadir Antena al Mapa
+        </button>
+
+      </form>
+
+      <!-- ---- CONTADOR DE ANTENAS ---- -->
+      <div class="panel-footer">
+        <span class="counter-label">Antenas en mapa:</span>
+        <span class="counter-value" id="contador">0</span>
+      </div>
+
+    </aside><!-- /panel -->
+
+    <!-- Notificación tipo toast -->
+    <div class="toast" id="toast"></div>
+
+  </main><!-- /main -->
+
+  <!-- Lógica de la aplicación -->
+  <script src="app.js"></script>
+</body>
+</html>

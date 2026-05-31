@@ -1,0 +1,692 @@
+/* ================================================
+   style.css — AntenaMap
+   Estética: Industrial / Técnica oscura y refinada
+   Fuentes: IBM Plex Mono (código) + Sora (UI)
+================================================ */
+
+/* ---- FUENTES GOOGLE ---- */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* ---- VARIABLES GLOBALES ---- */
+:root {
+  /* Paleta principal: azul-acero oscuro */
+  --bg-base:        #0b0f18;
+  --bg-panel:       #111827;
+  --bg-panel-alt:   #161f30;
+  --bg-field:       #0d1422;
+  --bg-dropdown:    #121b2e;
+  --bg-option-hov:  #1a2740;
+
+  /* Acento: cian eléctrico */
+  --accent:         #00d4ff;
+  --accent-dim:     #0099bb;
+  --accent-glow:    rgba(0, 212, 255, 0.18);
+
+  /* Texto */
+  --text-primary:   #e8edf5;
+  --text-secondary: #7a8aa0;
+  --text-muted:     #3d5068;
+
+  /* Bordes */
+  --border:         rgba(255,255,255,0.07);
+  --border-focus:   rgba(0, 212, 255, 0.5);
+
+  /* Semáforo: éxito / error */
+  --green:          #22c55e;
+  --red:            #ef4444;
+  --orange:         #f59e0b;
+
+  /* Geometría */
+  --radius-sm:      6px;
+  --radius-md:      10px;
+  --radius-lg:      16px;
+  --panel-w:        340px;
+  --header-h:       56px;
+
+  /* Tipografía */
+  --font-ui:        'Sora', sans-serif;
+  --font-mono:      'IBM Plex Mono', monospace;
+
+  /* Sombras */
+  --shadow-panel:   0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+  --shadow-btn:     0 4px 14px rgba(0, 212, 255, 0.25);
+}
+
+/* ---- RESET BÁSICO ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-ui);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================================================
+   CABECERA
+================================================ */
+.app-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-h);
+  background: rgba(11, 15, 24, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-icon {
+  font-size: 22px;
+  filter: drop-shadow(0 0 8px var(--accent));
+}
+
+.header-title {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.header-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: 4px;
+  padding-left: 12px;
+  border-left: 1px solid var(--border);
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ================================================
+   CUERPO PRINCIPAL
+================================================ */
+.app-body {
+  position: fixed;
+  top: var(--header-h);
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+}
+
+/* ================================================
+   MAPA
+================================================ */
+#mapa {
+  flex: 1;
+  height: 100%;
+  z-index: 1;
+  cursor: crosshair;
+}
+
+/* Estilos del cursor del mapa en el popup de Leaflet */
+.leaflet-popup-content-wrapper {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-focus);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  padding: 0;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+  min-width: 200px;
+}
+
+.leaflet-popup-tip {
+  background: var(--bg-panel);
+}
+
+.leaflet-popup-close-button {
+  color: var(--text-secondary) !important;
+  font-size: 18px !important;
+  padding: 8px 10px !important;
+}
+
+/* Popup personalizado */
+.popup-antena {
+  padding: 14px 16px;
+}
+
+.popup-antena h3 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.popup-antena p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.popup-antena p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.popup-bandas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.popup-badge {
+  background: var(--bg-base);
+  border: 1px solid var(--border-focus);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+}
+
+/* ================================================
+   PANEL LATERAL
+================================================ */
+.panel {
+  position: relative;
+  width: var(--panel-w);
+  height: 100%;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) transparent;
+}
+
+.panel::-webkit-scrollbar {
+  width: 4px;
+}
+.panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.panel::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+/* Línea decorativa superior de acento */
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.7;
+}
+
+/* ---- Cabecera del panel ---- */
+.panel-header {
+  padding: 22px 20px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.panel-hint {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.panel-hint::before {
+  content: '◉';
+  color: var(--accent);
+  font-size: 8px;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* ================================================
+   FORMULARIO
+================================================ */
+.form {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+/* Grupo de campo */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Fila de dos campos */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Etiqueta */
+.field-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Input de texto / número */
+.field-input {
+  background: var(--bg-field);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.field-input::placeholder {
+  color: var(--text-muted);
+}
+
+.field-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Quitar flechas de los inputs numéricos */
+.field-input[type="number"]::-webkit-inner-spin-button,
+.field-input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ================================================
+   DESPLEGABLE MULTIOPCIÓN (multiselect con checkboxes)
+================================================ */
+.multiselect {
+  position: relative;
+  user-select: none;
+}
+
+/* Trigger: el "input" visible que muestra las selecciones */
+.multiselect-trigger {
+  background: var(--bg-field);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-height: 38px;
+}
+
+.multiselect-trigger:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.multiselect-trigger.open {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.multiselect-text {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.multiselect-text.has-selection {
+  color: var(--accent);
+}
+
+.multiselect-arrow {
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.multiselect-trigger.open .multiselect-arrow {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+/* Menú desplegable */
+.multiselect-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  background: var(--bg-dropdown);
+  border: 1px solid var(--border-focus);
+  border-top: none;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  z-index: 500;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+
+.multiselect-dropdown.open {
+  max-height: 290px;
+  overflow-y: auto;
+  opacity: 1;
+  pointer-events: all;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) transparent;
+}
+
+.multiselect-dropdown.open::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Cada opción del menú */
+.multiselect-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+  position: relative;
+}
+
+.multiselect-option:hover {
+  background: var(--bg-option-hov);
+}
+
+/* Ocultar el checkbox nativo */
+.multiselect-option input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Checkbox visual personalizado */
+.check-mark {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--text-muted);
+  border-radius: 3px;
+  background: var(--bg-field);
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.multiselect-option input:checked ~ .check-mark {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Tilde del checkbox */
+.check-mark::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--bg-base);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.multiselect-option input:checked ~ .check-mark::after {
+  display: block;
+}
+
+/* Etiqueta de la opción */
+.option-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* Badge de tecnología (4G, 5G...) */
+.option-badge {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  letter-spacing: 0.05em;
+}
+
+/* Badge resaltado cuando el checkbox está marcado */
+.multiselect-option input:checked ~ .check-mark + .option-label + .option-badge,
+.multiselect-option input:checked ~ * .option-badge {
+  border-color: rgba(0, 212, 255, 0.4);
+  color: var(--accent);
+}
+
+/* ================================================
+   BOTONES
+================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-icon {
+  font-size: 14px;
+}
+
+/* Botón primario: añadir antena */
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-base);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+  background: #33ddff;
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Botón ancho completo */
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  padding: 11px;
+  font-size: 13px;
+}
+
+/* Botón exportar (cabecera) */
+.btn-export {
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+}
+
+.btn-export:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: var(--accent);
+}
+
+/* Botón cargar JSON (label disimulado como botón) */
+.btn-load {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.btn-load:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ================================================
+   PIE DEL PANEL (contador)
+================================================ */
+.panel-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-panel-alt);
+}
+
+.counter-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.counter-value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ================================================
+   TOAST / NOTIFICACIÓN
+================================================ */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  font-size: 13px;
+  color: var(--text-primary);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast.success { border-color: var(--green); color: var(--green); }
+.toast.error   { border-color: var(--red);   color: var(--red);   }
+.toast.info    { border-color: var(--accent); color: var(--accent); }
+
+/* ================================================
+   ESTILOS PARA EL MARCADOR SVG PERSONALIZADO
+================================================ */
+.icono-antena {
+  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.8));
+}
+
+/* ================================================
+   RESPONSIVE BÁSICO
+================================================ */
+@media (max-width: 680px) {
+  .panel {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .app-body {
+    flex-direction: column;
+  }
+
+  #mapa {
+    flex: 1;
+    min-height: 50vh;
+  }
+
+  .header-sub {
+    display: none;
+  }
+}
