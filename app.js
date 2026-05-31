@@ -2,6 +2,7 @@
  * app.js — AntenaMap
  * Lógica completa de la SPA: mapa Leaflet, formulario, multiselect,
  * gestión de antenas en memoria y exportación/importación de JSON.
+ * Ahora con edición de antenas y colores por tecnología.
  */
 
 /* ================================================
@@ -14,12 +15,89 @@ let listaAntenas = [];
 /**
  * Cada elemento del array de capas del mapa se guarda aquí
  * para poder limpiarlos al cargar un JSON nuevo.
- * Estructura: { marcador: L.Marker, circulo: L.Circle }
+ * Estructura: { marcador: L.Marker, circulo: L.Circle, indice: number }
  */
 let capasEnMapa = [];
 
 /** Referencia al objeto mapa de Leaflet */
 let mapa;
+
+/** Índice de la antena en edición (-1 si no hay ninguna en edición) */
+let indiceEnEdicion = -1;
+
+/* ================================================
+   FUNCIÓN AUXILIAR: DETERMINAR COLOR POR TECNOLOGÍA
+================================================ */
+
+/**
+ * Determina el color del círculo de cobertura basándose en la mejor tecnología disponible.
+ * Prioridad: 5G mmW > 5G n78 > 5G > 4G > 3G > 2G
+ * @param {Array<string>} bandas - Array de bandas/frecuencias seleccionadas
+ * @returns {Object} { color: string, fillColor: string, nombreTecnologia: string }
+ */
+function obtenerColorPorTecnologia(bandas) {
+  // Mapeo de bandas a tecnologías
+  const mapaBandas = {
+    '700 MHz': '4G',
+    '800 MHz': '4G',
+    '900 MHz': '3G',      // Principalmente 3G (también 2G)
+    '1800 MHz': '4G',     // Principalmente 4G (también 2G)
+    '2100 MHz': '4G',     // Principalmente 4G (también 3G)
+    '2600 MHz': '4G',
+    '3500 MHz': '5G',
+    '26 GHz': '5G mmW'
+  };
+
+  // Extrae las tecnologías de las bandas seleccionadas
+  const tecnologias = new Set();
+  bandas.forEach(banda => {
+    const tecn = mapaBandas[banda];
+    if (tecn) tecnologias.add(tecn);
+  });
+
+  // Determinar la mejor tecnología (prioridad descendente)
+  if (tecnologias.has('5G mmW')) {
+    return {
+      color: '#2d1b4e',           // Morado oscuro
+      fillColor: '#2d1b4e',
+      nombreTecnologia: '5G mmW'
+    };
+  }
+  if (tecnologias.has('5G n78')) {
+    return {
+      color: '#7c3aed',           // Morado
+      fillColor: '#7c3aed',
+      nombreTecnologia: '5G n78'
+    };
+  }
+  if (tecnologias.has('5G')) {
+    return {
+      color: '#ec4899',           // Rosa
+      fillColor: '#ec4899',
+      nombreTecnologia: '5G'
+    };
+  }
+  if (tecnologias.has('4G')) {
+    return {
+      color: '#22c55e',           // Verde
+      fillColor: '#22c55e',
+      nombreTecnologia: '4G'
+    };
+  }
+  if (tecnologias.has('3G')) {
+    return {
+      color: '#f59e0b',           // Naranja
+      fillColor: '#f59e0b',
+      nombreTecnologia: '3G'
+    };
+  }
+  // Si solo hay 2G o ninguna banda seleccionada
+  return {
+    color: '#6b7280',             // Gris
+    fillColor: '#6b7280',
+    nombreTecnologia: '2G'
+  };
+}
 
 /* ================================================
    INICIALIZACIÓN DEL MAPA
@@ -98,19 +176,23 @@ function crearIconoAntena() {
  * Dibuja el marcador y el círculo de cobertura de una antena en el mapa
  * y los registra en el array capasEnMapa.
  * @param {Object} antena - Objeto antena con { nombre, lat, lng, radioAlcance, bandas }
+ * @param {number} indice - Índice de la antena en el array listaAntenas
  */
-function dibujarAntenaEnMapa(antena) {
+function dibujarAntenaEnMapa(antena, indice) {
   // Crear el marcador con el icono SVG personalizado
   const marcador = L.marker([antena.lat, antena.lng], {
     icon: crearIconoAntena(),
     title: antena.nombre
   });
 
-  // Crear el círculo de cobertura semitransparente
+  // Obtener color basado en la tecnología
+  const infoColor = obtenerColorPorTecnologia(antena.bandas);
+
+  // Crear el círculo de cobertura semitransparente con color dinámico
   const circulo = L.circle([antena.lat, antena.lng], {
     radius:      antena.radioAlcance,
-    color:       '#00d4ff',      // Borde cian
-    fillColor:   '#00d4ff',
+    color:       infoColor.color,
+    fillColor:   infoColor.fillColor,
     fillOpacity: 0.06,
     weight:      1.5,
     dashArray:   '6, 4'          // Línea discontinua para aspecto técnico
@@ -124,20 +206,25 @@ function dibujarAntenaEnMapa(antena) {
   const popupHtml = `
     <div class="popup-antena">
       <h3>📡 ${antena.nombre}</h3>
+      <p><strong>Tecnología:</strong> ${infoColor.nombreTecnologia}</p>
       <p><strong>Radio de cobertura:</strong> ${antena.radioAlcance.toLocaleString('es-ES')} m</p>
       <p><strong>Coordenadas:</strong> ${antena.lat.toFixed(5)}, ${antena.lng.toFixed(5)}</p>
       <p><strong>Bandas:</strong></p>
       <div class="popup-bandas">${bandasHtml}</div>
+      <div class="popup-acciones">
+        <button class="popup-btn popup-btn-editar" data-indice="${indice}" onclick="abrirEdicion(event)">✏ Editar</button>
+        <button class="popup-btn popup-btn-eliminar" data-indice="${indice}" onclick="eliminarAntena(event)">🗑 Eliminar</button>
+      </div>
     </div>`;
 
-  marcador.bindPopup(popupHtml, { maxWidth: 280 });
+  marcador.bindPopup(popupHtml, { maxWidth: 300 });
 
   // Añadir ambas capas al mapa
   marcador.addTo(mapa);
   circulo.addTo(mapa);
 
   // Registrar las capas para poder eliminarlas luego
-  capasEnMapa.push({ marcador, circulo });
+  capasEnMapa.push({ marcador, circulo, indice });
 }
 
 /* ================================================
@@ -208,26 +295,146 @@ function limpiarFormulario() {
 
   // Asegurarse de que el dropdown queda cerrado
   cerrarMultiselect();
+
+  // Resetear el estado de edición
+  indiceEnEdicion = -1;
+  actualizarBotonesPrincipales();
+}
+
+/**
+ * Actualiza los botones principales según si estamos en modo edición o no.
+ */
+function actualizarBotonesPrincipales() {
+  const btnAgregar = document.getElementById('btn-agregar');
+  const panelTitle = document.querySelector('.panel-title');
+
+  if (indiceEnEdicion !== -1) {
+    btnAgregar.textContent = '✓ Actualizar Antena';
+    btnAgregar.classList.add('editing');
+    panelTitle.textContent = 'Editar Antena';
+  } else {
+    btnAgregar.textContent = '＋ Añadir Antena al Mapa';
+    btnAgregar.classList.remove('editing');
+    panelTitle.textContent = 'Nueva Antena';
+  }
+}
+
+/**
+ * Abre el formulario para editar una antena.
+ * Se dispara desde el botón de editar en el popup de la antena.
+ */
+function abrirEdicion(evento) {
+  evento.preventDefault();
+  evento.stopPropagation();
+
+  const indice = parseInt(evento.target.getAttribute('data-indice'));
+  const antena = listaAntenas[indice];
+
+  if (!antena) return;
+
+  indiceEnEdicion = indice;
+
+  // Rellenar el formulario con los datos de la antena
+  document.getElementById('nombre').value = antena.nombre;
+  document.getElementById('lat').value = antena.lat;
+  document.getElementById('lng').value = antena.lng;
+  document.getElementById('radio').value = antena.radioAlcance;
+
+  // Marcar las bandas correspondientes
+  document.querySelectorAll('.banda-check').forEach(cb => {
+    cb.checked = antena.bandas.includes(cb.value);
+  });
+
+  actualizarTextoMultiselect();
+  actualizarBotonesPrincipales();
+
+  // Cerrar el popup
+  mapa.closePopup();
+
+  // Scroll al panel (opcional, para destacar que está en edición)
+  document.getElementById('panel-lateral').scrollTop = 0;
+
+  mostrarToast(`✏ Editando antena: "${antena.nombre}"`, 'info');
+}
+
+/**
+ * Elimina una antena del mapa y del array.
+ * Se dispara desde el botón de eliminar en el popup de la antena.
+ */
+function eliminarAntena(evento) {
+  evento.preventDefault();
+  evento.stopPropagation();
+
+  const indice = parseInt(evento.target.getAttribute('data-indice'));
+  const antena = listaAntenas[indice];
+
+  if (!antena) return;
+
+  // Buscar y remover las capas del mapa
+  const capaIndex = capasEnMapa.findIndex(c => c.indice === indice);
+  if (capaIndex !== -1) {
+    const { marcador, circulo } = capasEnMapa[capaIndex];
+    mapa.removeLayer(marcador);
+    mapa.removeLayer(circulo);
+    capasEnMapa.splice(capaIndex, 1);
+  }
+
+  // Remover del array de antenas
+  listaAntenas.splice(indice, 1);
+
+  // Recalcular índices en capasEnMapa
+  capasEnMapa.forEach((capa, i) => {
+    if (capa.indice > indice) {
+      capa.indice--;
+    }
+  });
+
+  // Cerrar el popup
+  mapa.closePopup();
+
+  actualizarContador();
+  mostrarToast(`🗑 Antena "${antena.nombre}" eliminada`, 'success');
 }
 
 /* ================================================
-   AÑADIR ANTENA AL MAPA
+   AÑADIR O ACTUALIZAR ANTENA AL MAPA
 ================================================ */
 
 /**
- * Manejador del botón "Añadir Antena al Mapa".
- * Lee el formulario, valida, dibuja la antena y limpia el formulario.
+ * Manejador del botón "Añadir Antena al Mapa" o "Actualizar Antena".
+ * Lee el formulario, valida, dibuja/actualiza la antena y limpia el formulario.
  */
-function agregarAntena() {
+function agregarOActualizarAntena() {
   const antena = leerFormulario();
   if (!antena) return;                // Validación fallida → salir
 
-  listaAntenas.push(antena);          // Guardar en el array global
-  dibujarAntenaEnMapa(antena);        // Dibujar en el mapa
-  limpiarFormulario();                // Resetear el formulario
-  actualizarContador();               // Actualizar contador del panel
+  if (indiceEnEdicion !== -1) {
+    // MODO EDICIÓN: actualizar antena existente
+    const antenaPrevio = listaAntenas[indiceEnEdicion];
+    listaAntenas[indiceEnEdicion] = antena;
 
-  mostrarToast(`✓ Antena "${antena.nombre}" añadida`, 'success');
+    // Encontrar y remover las capas antiguas del mapa
+    const capaIndex = capasEnMapa.findIndex(c => c.indice === indiceEnEdicion);
+    if (capaIndex !== -1) {
+      const { marcador, circulo } = capasEnMapa[capaIndex];
+      mapa.removeLayer(marcador);
+      mapa.removeLayer(circulo);
+      capasEnMapa.splice(capaIndex, 1);
+    }
+
+    // Dibujar las capas nuevas con los datos actualizados
+    dibujarAntenaEnMapa(antena, indiceEnEdicion);
+    mostrarToast(`✓ Antena "${antena.nombre}" actualizada`, 'success');
+  } else {
+    // MODO CREACIÓN: agregar nueva antena
+    const nuevoIndice = listaAntenas.length;
+    listaAntenas.push(antena);
+    dibujarAntenaEnMapa(antena, nuevoIndice);
+    mostrarToast(`✓ Antena "${antena.nombre}" añadida`, 'success');
+  }
+
+  limpiarFormulario();
+  actualizarContador();
 }
 
 /* ================================================
@@ -235,41 +442,40 @@ function agregarAntena() {
 ================================================ */
 
 /**
- * Genera un archivo antenas.json con la lista actual y lo descarga.
+ * Exporta el array de antenas actual a un archivo JSON descargable.
  */
 function exportarJSON() {
   if (listaAntenas.length === 0) {
-    mostrarToast('⚠ No hay antenas para exportar', 'error');
+    mostrarToast('⚠ No hay antenas para exportar', 'warning');
     return;
   }
 
-  // Crear el JSON formateado con indentación de 2 espacios
-  const jsonString = JSON.stringify(listaAntenas, null, 2);
-  const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
+  // Crear el objeto JSON (stringificado con indentación)
+  const contenido = JSON.stringify(listaAntenas, null, 2);
+  const blob = new Blob([contenido], { type: 'application/json' });
 
-  // Crear un enlace temporal, hacer clic en él y eliminarlo
+  // Crear un enlace temporal de descarga
+  const url = URL.createObjectURL(blob);
   const enlace = document.createElement('a');
-  enlace.href     = url;
-  enlace.download = 'antenas.json';
+  enlace.href = url;
+  enlace.download = `antenas_${new Date().toISOString().split('T')[0]}.json`;
+
+  // Disparar la descarga y liberar recursos
   document.body.appendChild(enlace);
   enlace.click();
   document.body.removeChild(enlace);
-
-  // Liberar el objeto URL de la memoria
   URL.revokeObjectURL(url);
 
-  mostrarToast(`✓ Exportadas ${listaAntenas.length} antenas`, 'success');
+  mostrarToast(`✓ ${listaAntenas.length} antenas exportadas`, 'success');
 }
 
 /* ================================================
-   CARGAR JSON EXISTENTE
+   CARGAR DESDE JSON
 ================================================ */
 
 /**
- * Manejador del input de tipo file para cargar un JSON previo.
- * Lee el archivo, valida la estructura, limpia el mapa y vuelve a dibujarlo todo.
- * @param {Event} evento
+ * Lee un archivo JSON de antenas y lo carga en el mapa.
+ * @param {Event} evento - El evento change del input de archivo
  */
 function cargarJSON(evento) {
   const archivo = evento.target.files[0];
@@ -310,9 +516,9 @@ function cargarJSON(evento) {
 
       // Limpiar el mapa actual y cargar las nuevas antenas
       limpiarMapa();
-      datos.forEach(antena => {
+      datos.forEach((antena, indice) => {
         listaAntenas.push(antena);
-        dibujarAntenaEnMapa(antena);
+        dibujarAntenaEnMapa(antena, indice);
       });
 
       actualizarContador();
@@ -457,7 +663,7 @@ let toastTimer = null;
 /**
  * Muestra una notificación temporal en la parte inferior de la pantalla.
  * @param {string} mensaje - Texto a mostrar
- * @param {'success'|'error'|'info'} tipo - Variante visual
+ * @param {'success'|'error'|'info'|'warning'} tipo - Variante visual
  */
 function mostrarToast(mensaje, tipo = 'info') {
   const toast = document.getElementById('toast');
@@ -481,8 +687,8 @@ function mostrarToast(mensaje, tipo = 'info') {
  * Asocia los botones de la cabecera y el formulario con sus funciones.
  */
 function registrarEventos() {
-  // Botón "Añadir Antena al Mapa"
-  document.getElementById('btn-agregar').addEventListener('click', agregarAntena);
+  // Botón "Añadir/Actualizar Antena al Mapa"
+  document.getElementById('btn-agregar').addEventListener('click', agregarOActualizarAntena);
 
   // Botón "Exportar a JSON"
   document.getElementById('btn-exportar').addEventListener('click', exportarJSON);
