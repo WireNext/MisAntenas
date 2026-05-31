@@ -38,13 +38,13 @@ let indiceEnEdicion = -1;
 function obtenerColorPorTecnologia(bandas) {
   // Mapeo de bandas a tecnologías
   const mapaBandas = {
-    '700 MHz': '4G',
+    '700 MHz': '5G',
     '800 MHz': '4G',
     '900 MHz': '3G',      // Principalmente 3G (también 2G)
     '1800 MHz': '4G',     // Principalmente 4G (también 2G)
     '2100 MHz': '4G',     // Principalmente 4G (también 3G)
     '2600 MHz': '4G',
-    '3500 MHz': '5G',
+    '3500 MHz': '5G n78',
     '26 GHz': '5G mmW'
   };
 
@@ -193,7 +193,7 @@ function dibujarAntenaEnMapa(antena, indice) {
     radius:      antena.radioAlcance,
     color:       infoColor.color,
     fillColor:   infoColor.fillColor,
-    fillOpacity: 0.06,
+    fillOpacity: 0.50,
     weight:      1.5,
     dashArray:   '6, 4'          // Línea discontinua para aspecto técnico
   });
