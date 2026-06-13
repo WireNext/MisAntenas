@@ -151,7 +151,7 @@
     "nombre": "CR CARRETERA NACIONAL, ALMASSORA",
     "lat": 39.95945,
     "lng": -0.078696,
-    "radioAlcance": 700,
+    "radioAlcance": 800,
     "bandas": [
       "800 MHz",
       "900 MHz",
@@ -989,6 +989,703 @@
       "2100 MHz",
       "2600 MHz",
       "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PZ Ayuntamiento, 25. VALÈNCIA, VALENCIA/VALÈNCIA",
+    "lat": 39.468986,
+    "lng": -0.375866,
+    "radioAlcance": 500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Pelayo, 00021. VALÈNCIA, VALENCIA/VALÈNCIA (MicroCelda)",
+    "lat": 39.466386,
+    "lng": -0.378728,
+    "radioAlcance": 90,
+    "bandas": [
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PJ Doctor Serra, 1. VALÈNCIA, VALENCIA/VALÈNCIA",
+    "lat": 39.466733,
+    "lng": -0.375193,
+    "radioAlcance": 600,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CR Aeropuerto, 1. MANISES, VALENCIA/VALÈNCIA (Internas))",
+    "lat": 39.491538,
+    "lng": -0.473276,
+    "radioAlcance": 250,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CL AEROPUERTO, 18. MANISES, VALENCIA/VALÈNCIA",
+    "lat": 39.488464,
+    "lng": -0.468609,
+    "radioAlcance": 700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL TRASLACION, 16. MANISES, VALENCIA/VALÈNCIA",
+    "lat": 39.494197,
+    "lng": -0.468163,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP PS GUILLERMO OSMA, 16. MANISES, VALENCIA/VALÈNCIA",
+    "lat": 39.4893,
+    "lng": -0.458499,
+    "radioAlcance": 1000,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Jose Soto Mico, 44. VALÈNCIA, VALENCIA/VALÈNCIA",
+    "lat": 39.439101,
+    "lng": -0.389585,
+    "radioAlcance": 700,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Palancia, 44. SAGUNT/SAGUNTO, VALENCIA/VALÈNCIA",
+    "lat": 39.662089,
+    "lng": -0.218651,
+    "radioAlcance": 760,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "Sagunt Platja",
+    "lat": 39.665217,
+    "lng": -0.20951,
+    "radioAlcance": 600,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Oviedo, 46. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.526321,
+    "lng": -0.164312,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL VIGO , 6. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.534156,
+    "lng": -0.157942,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV VICENTE LLORCA ALOS, 1. BENIDORM, ALICANTE/ALACANT (Micro)",
+    "lat": 38.536128,
+    "lng": -0.151499,
+    "radioAlcance": 60,
+    "bandas": [
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV RACHARELL, 1. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.53794,
+    "lng": -0.146996,
+    "radioAlcance": 850,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV ARMADA ESPAÑOLA ESQ AV XIXO. BENIDORM, ALICANTE/ALACANT (Micro)",
+    "lat": 38.537368,
+    "lng": -0.144016,
+    "radioAlcance": 60,
+    "bandas": [
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV REI JAUME, 1. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.537378,
+    "lng": -0.137941,
+    "radioAlcance": 760,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL CONDESTABLE ZARAGOZA, 23. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.535079,
+    "lng": -0.131903,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV ALCOY, 17. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.536228,
+    "lng": -0.121316,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Bruselas, 2. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.534588,
+    "lng": -0.104724,
+    "radioAlcance": 850,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV MADRID, S/N. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.534558,
+    "lng": -0.110598,
+    "radioAlcance": 76,
+    "bandas": [
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP JUNTO A POLÍGONO 13 PARCELA 55. BENIDORM, ALICANTE/ALACANT",
+    "lat": 38.550796,
+    "lng": -0.079557,
+    "radioAlcance": 1000,
+    "bandas": [
+      "900 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "CL ASSAGADOR DE LA MARJAL, 2. DÉNIA, ALICANTE/ALACANT",
+    "lat": 38.850433,
+    "lng": 0.09385,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP PD BOVETES NORD B, 3. DÉNIA, ALICANTE/ALACANT",
+    "lat": 38.850723,
+    "lng": 0.081129,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Virgen Ermitaña, 11. PENÍSCOLA/PEÑÍSCOLA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.359291,
+    "lng": 0.402428,
+    "radioAlcance": 700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Don Antonio Pascual, 00033. PENÍSCOLA/PEÑÍSCOLA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.362835,
+    "lng": 0.397176,
+    "radioAlcance": 700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Marjals, 00005. PENÍSCOLA/PEÑÍSCOLA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.367735,
+    "lng": 0.402693,
+    "radioAlcance": 700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Papa Luna, 47. PENÍSCOLA/PEÑÍSCOLA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.376142,
+    "lng": 0.405926,
+    "radioAlcance": 700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Teruel, 1. PENÍSCOLA/PEÑÍSCOLA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.386252,
+    "lng": 0.409281,
+    "radioAlcance": 700,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "CM LA VOLTA, S/N. PENÍSCOLA/PEÑÍSCOLA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.394407,
+    "lng": 0.407422,
+    "radioAlcance": 1250,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP PD SOLAES, 148. BENICARLÓ, CASTELLÓN/CASTELLÓ",
+    "lat": 40.406908,
+    "lng": 0.422201,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Corts Valencianes, 15. BENICARLÓ, CASTELLÓN/CASTELLÓ",
+    "lat": 40.412548,
+    "lng": 0.423832,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Penyagolosa, 9. BENICARLÓ, CASTELLÓN/CASTELLÓ",
+    "lat": 40.420766,
+    "lng": 0.426922,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CM TRAVESIA, 13. BENICARLÓ, CASTELLÓN/CASTELLÓ",
+    "lat": 40.421117,
+    "lng": 0.412878,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Arcipreste Bono, 49. VINARÒS, CASTELLÓN/CASTELLÓ",
+    "lat": 40.467144,
+    "lng": 0.474097,
+    "radioAlcance": 800,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Almas, 8. VINARÒS, CASTELLÓN/CASTELLÓ",
+    "lat": 40.473126,
+    "lng": 0.477728,
+    "radioAlcance": 900,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CR NACIONAL 340 - KM 1049. VINARÒS, CASTELLÓN/CASTELLÓ",
+    "lat": 40.456756,
+    "lng": 0.455015,
+    "radioAlcance": 1250,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "AV GIL D'ATROSILLO, 14. VINARÒS, CASTELLÓN/CASTELLÓ",
+    "lat": 40.464156,
+    "lng": 0.449431,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Francisco Jose Balada, 00015. VINARÒS, CASTELLÓN/CASTELLÓ",
+    "lat": 40.485702,
+    "lng": 0.488484,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CR DE LA COSTA, 130. VINARÒS, CASTELLÓN/CASTELLÓ",
+    "lat": 40.493576,
+    "lng": 0.495088,
+    "radioAlcance": 750,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Pietat, 104. VILA-REAL, CASTELLÓN/CASTELLÓ",
+    "lat": 39.936066,
+    "lng": -0.108619,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Carlos Sarthou, 3. VILA-REAL, CASTELLÓN/CASTELLÓ",
+    "lat": 39.935289,
+    "lng": -0.098732,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP CARINYENA, 12. VILA-REAL, CASTELLÓN/CASTELLÓ",
+    "lat": 39.924515,
+    "lng": -0.097193,
+    "radioAlcance": 750,
+    "bandas": [
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "VP POLIGONO 10, PARCELA 28. ALQUERIES, LES/ALQUERÍAS DEL NIÑO PERDIDO, CASTELLÓN/CASTELLÓ",
+    "lat": 39.896823,
+    "lng": -0.129411,
+    "radioAlcance": 2000,
+    "bandas": [
+      "700 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "Poligon Industrial La Plana",
+    "lat": 39.917768,
+    "lng": -0.112052,
+    "radioAlcance": 850,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "2100 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Argent, 5. BORRIANA/BURRIANA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.878457,
+    "lng": -0.111558,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CR CV Trece, S/N. BENLLOC, CASTELLÓN/CASTELLÓ",
+    "lat": 40.206763,
+    "lng": 0.069094,
+    "radioAlcance": 750,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "2100 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 6. PARCELA 534, S/N. VILANOVA DALCOLEA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.231481,
+    "lng": 0.076832,
+    "radioAlcance": 1000,
+    "bandas": [
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "VP POLÍGONO 8 PARCELA 2, S/N. VILANOVA DALCOLEA, CASTELLÓN/CASTELLÓ",
+    "lat": 40.222141,
+    "lng": 0.047566,
+    "radioAlcance": 1500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP POLÍGONO 22 PARCELA 54, S/N. BENLLOC, CASTELLÓN/CASTELLÓ",
+    "lat": 40.206586,
+    "lng": 0.032026,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CR DE ZARAGOZA, 38. CABANES, CASTELLÓN/CASTELLÓ",
+    "lat": 40.155499,
+    "lng": 0.04063,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL POLIGONO 4 PARCELA 255, S/N. POBLA TORNESA (LA), CASTELLÓN/CASTELLÓ",
+    "lat": 40.108915,
+    "lng": 0.013604,
+    "radioAlcance": 1500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV MALLORCA, 19. NULES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.827374,
+    "lng": -0.110571,
+    "radioAlcance": 1000,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
     ]
   }
 ]
