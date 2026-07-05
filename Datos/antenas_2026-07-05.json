@@ -3,7 +3,7 @@
     "nombre": "Pl. Pere Cornell Almassora",
     "lat": 39.94525,
     "lng": -0.064488,
-    "radioAlcance": 600,
+    "radioAlcance": 750,
     "bandas": [
       "700 MHz",
       "800 MHz",
@@ -18,7 +18,7 @@
     "nombre": "Cl. Constitució Espanyola, Almassora",
     "lat": 39.949305,
     "lng": -0.06116,
-    "radioAlcance": 600,
+    "radioAlcance": 750,
     "bandas": [
       "700 MHz",
       "800 MHz",
@@ -71,7 +71,7 @@
     "nombre": "Cl, de la Industria",
     "lat": 39.952702,
     "lng": -0.074104,
-    "radioAlcance": 600,
+    "radioAlcance": 750,
     "bandas": [
       "700 MHz",
       "800 MHz",
@@ -138,7 +138,7 @@
     "nombre": "CM Hostalazos, ALMASSORA",
     "lat": 39.95769,
     "lng": -0.083835,
-    "radioAlcance": 600,
+    "radioAlcance": 750,
     "bandas": [
       "700 MHz",
       "800 MHz",
@@ -353,7 +353,7 @@
     "nombre": "VP POLÍGONO 72 PARCELA 51, S/N. CASTELLÓ DE LA PLANA, CASTELLÓN/CASTELLÓ",
     "lat": 39.961851,
     "lng": -0.06448,
-    "radioAlcance": 700,
+    "radioAlcance": 800,
     "bandas": [
       "700 MHz",
       "800 MHz",
@@ -662,7 +662,7 @@
     "nombre": "AV GIORGETA, 41. VALÈNCIA, VALENCIA/VALÈNCIA",
     "lat": 39.459117,
     "lng": -0.384173,
-    "radioAlcance": 400,
+    "radioAlcance": 650,
     "bandas": [
       "1800 MHz",
       "2100 MHz",
@@ -967,7 +967,7 @@
     "nombre": "CL Matilde Salvador, 1. VILA-REAL, CASTELLÓN/CASTELLÓ",
     "lat": 39.92881,
     "lng": -0.104939,
-    "radioAlcance": 500,
+    "radioAlcance": 750,
     "bandas": [
       "700 MHz",
       "800 MHz",
@@ -1062,7 +1062,7 @@
     "nombre": "CL TRASLACION, 16. MANISES, VALENCIA/VALÈNCIA",
     "lat": 39.494197,
     "lng": -0.468163,
-    "radioAlcance": 800,
+    "radioAlcance": 1000,
     "bandas": [
       "700 MHz",
       "800 MHz",
@@ -1686,6 +1686,850 @@
       "800 MHz",
       "900 MHz",
       "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Tomas de Villarroya, 12. VALÈNCIA, VALENCIA/VALÈNCIA",
+    "lat": 39.448141,
+    "lng": -0.386946,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV BLASCO IBAÑEZ , S/N. VALÈNCIA, VALENCIA/VALÈNCIA",
+    "lat": 39.47015,
+    "lng": -0.33475,
+    "radioAlcance": 600,
+    "bandas": [
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "AV MAR DEL, 21. ALBUIXECH, VALENCIA/VALÈNCIA",
+    "lat": 39.541646,
+    "lng": -0.311909,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Massamagrell, 26. POBLA DE FARNALS (LA), VALENCIA/VALÈNCIA",
+    "lat": 39.562518,
+    "lng": -0.294271,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CM PLAYA A, 89 B, S/N. PUIG DE SANTA MARIA, EL, VALENCIA/VALÈNCIA",
+    "lat": 39.569068,
+    "lng": -0.281804,
+    "radioAlcance": 900,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 14, PARC. 223, S/N. PUIG DE SANTA MARIA, EL, VALENCIA/VALÈNCIA",
+    "lat": 39.581078,
+    "lng": -0.291156,
+    "radioAlcance": 1500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PS Maritimo, 39. PUÇOL, VALENCIA/VALÈNCIA",
+    "lat": 39.60432,
+    "lng": -0.267035,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Collidors, 10. PUÇOL, VALENCIA/VALÈNCIA",
+    "lat": 39.621962,
+    "lng": -0.302392,
+    "radioAlcance": 950,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 43 121, S/N. SAGUNTO/SAGUNT, VALENCIA/VALÈNCIA",
+    "lat": 39.644854,
+    "lng": -0.318722,
+    "radioAlcance": 1700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL CAMP MORVEDRE (URB. ALFAHUIR.),, 44D. PUÇOL, VALENCIA/VALÈNCIA",
+    "lat": 39.634142,
+    "lng": -0.33784,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Sequia de la Torre, 27. SAGUNTO/SAGUNT, VALENCIA/VALÈNCIA",
+    "lat": 39.634993,
+    "lng": -0.275409,
+    "radioAlcance": 1000,
+    "bandas": [
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Mariano Benlliure, 2. CANET D'EN BERENGUER, VALENCIA/VALÈNCIA",
+    "lat": 39.67374,
+    "lng": -0.204591,
+    "radioAlcance": 750,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CL FLOR DE MAIG, 7. CANET D'EN BERENGUER, VALENCIA/VALÈNCIA",
+    "lat": 39.680876,
+    "lng": -0.205361,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Blasco Ibañez, S/N. CANET D'EN BERENGUER, VALENCIA/VALÈNCIA",
+    "lat": 39.684972,
+    "lng": -0.203848,
+    "radioAlcance": 500,
+    "bandas": [
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV CECINA, 3 A. SAGUNT/SAGUNTO, VALENCIA/VALÈNCIA",
+    "lat": 39.70618,
+    "lng": -0.199664,
+    "radioAlcance": 1000,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Peruga, 134. MONCOFA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.79623,
+    "lng": -0.134196,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV DEL PORT, 35. MONCOFA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.801679,
+    "lng": -0.132917,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Orpesa, 26. MONCOFA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.806389,
+    "lng": -0.127158,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Mendez Nuñez, 16. CHILCHES/XILXES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.767344,
+    "lng": -0.156907,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL EL PINET, 1. CHILCHES/XILXES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.790286,
+    "lng": -0.1737,
+    "radioAlcance": 1000,
+    "bandas": [
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Arquitecto Romani, 25. CHILCHES/XILXES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.783019,
+    "lng": -0.188313,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL POLIGONO 1, 56. CHILCHES/XILXES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.796683,
+    "lng": -0.181167,
+    "radioAlcance": 950,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Faro, 72. ORPESA/OROPESA DEL MAR, CASTELLÓN/CASTELLÓ",
+    "lat": 40.084721,
+    "lng": 0.143273,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Virgen del Lidon, 19. CASTELLÓ DE LA PLANA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.989965,
+    "lng": -0.033098,
+    "radioAlcance": 600,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "AV HERMANOS BOU, 154. CASTELLÓN DE LA PLANA/CASTELLÓ DE LA PLANA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.975155,
+    "lng": -0.001722,
+    "radioAlcance": 900,
+    "bandas": [
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "CM DE LA DONACIÓ, 99. CASTELLÓ DE LA PLANA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.981436,
+    "lng": -0.00655,
+    "radioAlcance": 1000,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 81 PARCELA 9045, S/N. SAGUNTO/SAGUNT, VALENCIA/VALÈNCIA",
+    "lat": 39.664728,
+    "lng": -0.304361,
+    "radioAlcance": 1000,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "CR Valles, 24. SAGUNTO/SAGUNT, VALENCIA/VALÈNCIA",
+    "lat": 39.721068,
+    "lng": -0.246474,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Sants de la Pedra, 65. SAGUNT/SAGUNTO, VALENCIA/VALÈNCIA",
+    "lat": 39.682156,
+    "lng": -0.277174,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PZ Cronista Chabret, 25. SAGUNT/SAGUNTO, VALENCIA/VALÈNCIA",
+    "lat": 39.680208,
+    "lng": -0.278818,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 85 parcela 52, S/N. SAGUNTO/SAGUNT, VALENCIA/VALÈNCIA",
+    "lat": 39.667623,
+    "lng": -0.273682,
+    "radioAlcance": 1700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "CL DE LA ESTACION, S/N. ALMENARA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.751785,
+    "lng": -0.2189,
+    "radioAlcance": 950,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "VP POLÍGONO 4 PARCELA 179, S/N. LLOSA (LA), CASTELLÓN/CASTELLÓ",
+    "lat": 39.765756,
+    "lng": -0.208311,
+    "radioAlcance": 1400,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP POLIGONO 2 PARCELA 126, SN. CHILCHES/XILXES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.775672,
+    "lng": -0.19085,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Cenia, S/N. MONCOFA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.808511,
+    "lng": -0.150021,
+    "radioAlcance": 900,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP BELCAIRE, 424. VALL DUIXÓ (LA), CASTELLÓN/CASTELLÓ",
+    "lat": 39.805083,
+    "lng": -0.217313,
+    "radioAlcance": 900,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL A. POLIGONO INDUSTRIAL LA MINA, 22. NULES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.830647,
+    "lng": -0.165138,
+    "radioAlcance": 1700,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Constitucion, 71. NULES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.849595,
+    "lng": -0.157912,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Sagrada Familia, 27. NULES, CASTELLÓN/CASTELLÓ",
+    "lat": 39.856101,
+    "lng": -0.15188,
+    "radioAlcance": 800,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP POLIGONO 5 PARCELA 370, S/N. ALQUERIES, LES/ALQUERÍAS DEL NIÑO PERDIDO, CASTELLÓN/CASTELLÓ",
+    "lat": 39.878417,
+    "lng": -0.126477,
+    "radioAlcance": 1000,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "CM Travessa, 15. VILA-REAL, CASTELLÓN/CASTELLÓ",
+    "lat": 39.946521,
+    "lng": -0.089339,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "AV España, 78. SEGORBE, CASTELLÓN/CASTELLÓ",
+    "lat": 39.847039,
+    "lng": -0.487167,
+    "radioAlcance": 600,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Marcelino Blasco, 1. SEGORBE, CASTELLÓN/CASTELLÓ",
+    "lat": 39.851279,
+    "lng": -0.488873,
+    "radioAlcance": 650,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CM SUBIDA MONTE SAN BLAS, 35. SEGORBE, CASTELLÓN/CASTELLÓ",
+    "lat": 39.851952,
+    "lng": -0.493403,
+    "radioAlcance": 350,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "CL MUSICO JUAN FCO GIL MTNEZ, 11. SONEJA, CASTELLÓN/CASTELLÓ",
+    "lat": 39.815554,
+    "lng": -0.429352,
+    "radioAlcance": 750,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "VP POLÍGONO 14 PARCELA 9, S/N. SOT DE FERRER, CASTELLÓN/CASTELLÓ",
+    "lat": 39.802293,
+    "lng": -0.409391,
+    "radioAlcance": 1850,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CR Acceso Cuarta Planta, 00051. SAGUNT/SAGUNTO, VALENCIA/VALÈNCIA",
+    "lat": 39.641442,
+    "lng": -0.232306,
+    "radioAlcance": 1000,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "VP AR PARC EMPRESARIAL SAGUNT-1 2(Z), S/N. SAGUNTO/SAGUNT, VALENCIA/VALÈNCIA",
+    "lat": 39.643313,
+    "lng": -0.244784,
+    "radioAlcance": 1000,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Ojos Negros, 41. SAGUNTO/SAGUNT, VALENCIA/VALÈNCIA",
+    "lat": 39.656611,
+    "lng": -0.225134,
+    "radioAlcance": 900,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV MAS DE LOLI, 164. MANISES, VALENCIA/VALÈNCIA",
+    "lat": 39.504053,
+    "lng": -0.497925,
+    "radioAlcance": 1000,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 5 PARCELA 291, S/N. MANISES, VALENCIA/VALÈNCIA",
+    "lat": 39.507766,
+    "lng": -0.506691,
+    "radioAlcance": 1500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP CAÑADA 108 Polígono 16 Parcela 120, SN. PATERNA, VALENCIA/VALÈNCIA",
+    "lat": 39.51721,
+    "lng": -0.482937,
+    "radioAlcance": 1500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CL CIUTAT DE SEVILLA, 76. PATERNA, VALENCIA/VALÈNCIA",
+    "lat": 39.523365,
+    "lng": -0.466219,
+    "radioAlcance": 950,
+    "bandas": [
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "AV DE LA INDUSTRIA, 12. PATERNA, VALENCIA/VALÈNCIA",
+    "lat": 39.541498,
+    "lng": -0.460267,
+    "radioAlcance": 1700,
+    "bandas": [
+      "700 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "CL 29, 92. PATERNA, VALENCIA/VALÈNCIA",
+    "lat": 39.530745,
+    "lng": -0.474086,
+    "radioAlcance": 700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 58 PARCELA 29, s/n. BÉTERA, VALENCIA/VALÈNCIA",
+    "lat": 39.569056,
+    "lng": -0.421987,
+    "radioAlcance": 1500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz"
+    ]
+  },
+  {
+    "nombre": "AV JUAN DE LA CIERVA Y CODORNIU, 4. PATERNA, VALENCIA/VALÈNCIA",
+    "lat": 39.54441,
+    "lng": -0.450718,
+    "radioAlcance": 1500,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 17 PARCELA 1, SN. VALÈNCIA, VALENCIA/VALÈNCIA",
+    "lat": 39.560247,
+    "lng": -0.432377,
+    "radioAlcance": 1700,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "CL QUINSA, 39. MONCADA, VALENCIA/VALÈNCIA",
+    "lat": 39.585837,
+    "lng": -0.384682,
+    "radioAlcance": 2500,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz"
+    ]
+  },
+  {
+    "nombre": "PG 6.PARCELA58, S/N. MUSEROS, VALENCIA/VALÈNCIA",
+    "lat": 39.591717,
+    "lng": -0.367763,
+    "radioAlcance": 2400,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "CL Teixidors, 3. PUÇOL, VALENCIA/VALÈNCIA",
+    "lat": 39.613231,
+    "lng": -0.321538,
+    "radioAlcance": 2400,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Hostalets, 90. PUÇOL, VALENCIA/VALÈNCIA",
+    "lat": 39.619003,
+    "lng": -0.308229,
+    "radioAlcance": 700,
+    "bandas": [
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz"
+    ]
+  },
+  {
+    "nombre": "AV MOLINS, 12. PUÇOL, VALENCIA/VALÈNCIA",
+    "lat": 39.628181,
+    "lng": -0.305115,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "AV MARINA, 187. PUÇOL, VALENCIA/VALÈNCIA",
+    "lat": 39.613536,
+    "lng": -0.261462,
+    "radioAlcance": 600,
+    "bandas": [
+      "800 MHz",
+      "900 MHz"
+    ]
+  },
+  {
+    "nombre": "AV Corazon de Jesus, 5. VALL D'UIXÓ (LA), CASTELLÓN/CASTELLÓ",
+    "lat": 39.823617,
+    "lng": -0.231088,
+    "radioAlcance": 950,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "2600 MHz",
+      "3500 MHz"
+    ]
+  },
+  {
+    "nombre": "VP CARBONAIRE TR, 1. VALL D'UIXÓ (LA), CASTELLÓN/CASTELLÓ",
+    "lat": 39.82814,
+    "lng": -0.235809,
+    "radioAlcance": 750,
+    "bandas": [
+      "700 MHz",
+      "800 MHz",
+      "900 MHz",
+      "1800 MHz",
+      "2100 MHz",
+      "3500 MHz"
     ]
   }
 ]

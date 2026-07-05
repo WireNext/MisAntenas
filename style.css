@@ -752,3 +752,26 @@ html, body {
     font-size: 12px;
   }
 }
+
+/* ================================================
+   EFECTOS DE COBERTURA AVANZADOS (DIFUMINADO)
+================================================ */
+
+/* Forzar que el contenedor de vectores SVG respete el orden z-index */
+.leaflet-overlay-pane svg thpath,
+.leaflet-overlay-pane g {
+  pointer-events: auto;
+}
+
+/* Clases de desenfoque basadas en la tecnología para dar un aspecto degradado */
+.cobertura-blur-high {
+  filter: drop-shadow(0 0 4px var(--blur-color, currentColor)) blur(6px);
+}
+
+.cobertura-blur-mid {
+  filter: drop-shadow(0 0 3px var(--blur-color, currentColor)) blur(12px);
+}
+
+.cobertura-blur-low {
+  filter: drop-shadow(0 0 2px var(--blur-color, currentColor)) blur(20px);
+}

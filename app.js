@@ -25,6 +25,8 @@ let mapa;
 /** Índice de la antena en edición (-1 si no hay ninguna en edición) */
 let indiceEnEdicion = -1;
 
+let grupoMarcadores;
+
 /* ================================================
    FUNCIÓN AUXILIAR: DETERMINAR COLOR POR TECNOLOGÍA
 ================================================ */
@@ -56,46 +58,58 @@ function obtenerColorPorTecnologia(bandas) {
   });
 
   // Determinar la mejor tecnología (prioridad descendente)
-  if (tecnologias.has('5G mmW')) {
+if (tecnologias.has('5G mmW')) {
     return {
       color: '#2d1b4e',           // Morado oscuro
       fillColor: '#2d1b4e',
-      nombreTecnologia: '5G mmW'
+      nombreTecnologia: '5G mmW',
+      prioridad: 6,
+      claseBlur: 'cobertura-blur-high'
     };
   }
   if (tecnologias.has('5G n78')) {
     return {
       color: '#7c3aed',           // Morado
       fillColor: '#7c3aed',
-      nombreTecnologia: '5G n78'
+      nombreTecnologia: '5G n78',
+      prioridad: 5,
+      claseBlur: 'cobertura-blur-high'
     };
   }
   if (tecnologias.has('5G')) {
     return {
       color: '#ec4899',           // Rosa
       fillColor: '#ec4899',
-      nombreTecnologia: '5G'
+      nombreTecnologia: '5G',
+      prioridad: 4,
+      claseBlur: 'cobertura-blur-high'
     };
   }
   if (tecnologias.has('4G')) {
     return {
       color: '#22c55e',           // Verde
       fillColor: '#22c55e',
-      nombreTecnologia: '4G'
+      nombreTecnologia: '4G',
+      prioridad: 3,
+      claseBlur: 'cobertura-blur-mid'
     };
   }
   if (tecnologias.has('3G')) {
     return {
       color: '#f59e0b',           // Naranja
       fillColor: '#f59e0b',
-      nombreTecnologia: '3G'
+      nombreTecnologia: '3G',
+      prioridad: 2,
+      claseBlur: 'cobertura-blur-low'
     };
   }
   // Si solo hay 2G o ninguna banda seleccionada
   return {
     color: '#6b7280',             // Gris
     fillColor: '#6b7280',
-    nombreTecnologia: '2G'
+    nombreTecnologia: '2G',
+    prioridad: 1,
+    claseBlur: 'cobertura-blur-low'
   };
 }
 
@@ -124,6 +138,15 @@ function inicializarMapa() {
     document.getElementById('lng').value  = lng.toFixed(6);
     mostrarToast('Coordenadas capturadas del mapa', 'info');
   });
+  grupoMarcadores = L.layerGroup().addTo(mapa);
+
+  // Crear el panel de control de capas (arriba a la derecha)
+  const capasSuperpuestas = {
+    "📌 Mostrar Marcadores": grupoMarcadores
+  };
+  
+  // Añadir el selector al mapa de forma compacta
+  L.control.layers(null, capasSuperpuestas, { collapsed: false }).addTo(mapa);
 }
 
 /* ================================================
@@ -179,26 +202,80 @@ function crearIconoAntena() {
  * @param {number} indice - Índice de la antena en el array listaAntenas
  */
 function dibujarAntenaEnMapa(antena, indice) {
-  // Crear el marcador con el icono SVG personalizado
+  // 1. Crear el marcador con el icono SVG personalizado
   const marcador = L.marker([antena.lat, antena.lng], {
     icon: crearIconoAntena(),
     title: antena.nombre
   });
 
-  // Obtener color basado en la tecnología
+  // 2. Obtener color, prioridad y metadatos basados en la tecnología
   const infoColor = obtenerColorPorTecnologia(antena.bandas);
 
-  // Crear el círculo de cobertura semitransparente con color dinámico
+  // ID único para el degradado de esta antena en concreto
+  const idDegradado = `degradado-antena-${indice}-${Date.now()}`;
+
+  // 3. Crear el círculo de cobertura
   const circulo = L.circle([antena.lat, antena.lng], {
     radius:      antena.radioAlcance,
-    color:       infoColor.color,
+    color:       'transparent', // Quitamos el borde sólido exterior
     fillColor:   infoColor.fillColor,
-    fillOpacity: 0.50,
-    weight:      1.5,
-    dashArray:   '6, 4'          // Línea discontinua para aspecto técnico
+    fillOpacity: 0.6,          // Opacidad máxima en el centro del degradado
+    weight:      0
   });
 
-  // Construir el contenido del popup con HTML estilizado
+  // Guardamos la prioridad en la capa para la ordenación posterior
+  circulo.prioridadTecnologica = infoColor.prioridad;
+
+  // 4. Inyectar el degradado radial cuando el círculo se añade al mapa
+  circulo.on('add', function () {
+    // Leaflet genera un elemento SVG por cada capa. Obtenemos su contenedor <svg>
+    const svg = circulo._renderer._container;
+    
+    // Comprobar si ya existe una sección <defs> en el SVG del mapa, si no, crearla
+    let defs = svg.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      svg.insertBefore(defs, svg.firstChild);
+    }
+
+    // Crear el elemento radialGradient personalizado para esta cobertura
+    const radialGradient = document.createElementNS('http://www.w3.org/2000/svg', 'radialGradient');
+    radialGradient.setAttribute('id', idDegradado);
+    radialGradient.setAttribute('cx', '50%');
+    radialGradient.setAttribute('cy', '50%');
+    radialGradient.setAttribute('r', '50%'); // El degradado se extiende hasta el borde exacto
+
+    // Parada 0% (Centro del círculo): Color sólido con la opacidad configurada
+    const stopCentro = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+    stopCentro.setAttribute('offset', '0%');
+    stopCentro.setAttribute('stop-color', infoColor.fillColor);
+    stopCentro.setAttribute('stop-opacity', '1');
+
+    // Parada 70% (Donde empieza a desvanecerse con más fuerza)
+    const stopMedio = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+    stopMedio.setAttribute('offset', '60%');
+    stopMedio.setAttribute('stop-color', infoColor.fillColor);
+    stopMedio.setAttribute('stop-opacity', '0.7');
+
+    // Parada 100% (Borde exterior): Totalmente transparente
+    const stopBorde = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+    stopBorde.setAttribute('offset', '100%');
+    stopBorde.setAttribute('stop-color', infoColor.fillColor);
+    stopBorde.setAttribute('stop-opacity', '0');
+
+    // Unir las paradas al degradado y guardarlo en <defs>
+    radialGradient.appendChild(stopCentro);
+    radialGradient.appendChild(stopMedio);
+    radialGradient.appendChild(stopBorde);
+    defs.appendChild(radialGradient);
+
+    // Aplicar el degradado generado al relleno del círculo de Leaflet
+    if (circulo._path) {
+      circulo._path.setAttribute('fill', `url(#${idDegradado})`);
+    }
+  });
+
+  // 5. Configurar el Popup (Igual que lo tenías)
   const bandasHtml = antena.bandas.length > 0
     ? antena.bandas.map(b => `<span class="popup-badge">${b}</span>`).join(' ')
     : '<span style="color:var(--text-muted);font-size:11px">Sin especificar</span>';
@@ -207,9 +284,7 @@ function dibujarAntenaEnMapa(antena, indice) {
     <div class="popup-antena">
       <h3>📡 ${antena.nombre}</h3>
       <p><strong>Tecnología:</strong> ${infoColor.nombreTecnologia}</p>
-      <p><strong>Radio de cobertura:</strong> ${antena.radioAlcance.toLocaleString('es-ES')} m</p>
-      <p><strong>Coordenadas:</strong> ${antena.lat.toFixed(5)}, ${antena.lng.toFixed(5)}</p>
-      <p><strong>Bandas:</strong></p>
+      <p><strong>Radio:</strong> ${antena.radioAlcance.toLocaleString('es-ES')} m</p>
       <div class="popup-bandas">${bandasHtml}</div>
       <div class="popup-acciones">
         <button class="popup-btn popup-btn-editar" data-indice="${indice}" onclick="abrirEdicion(event)">✏ Editar</button>
@@ -219,12 +294,53 @@ function dibujarAntenaEnMapa(antena, indice) {
 
   marcador.bindPopup(popupHtml, { maxWidth: 300 });
 
-  // Añadir ambas capas al mapa
-  marcador.addTo(mapa);
+  // 6. Añadir al mapa
   circulo.addTo(mapa);
+  marcador.addTo(mapa);
 
-  // Registrar las capas para poder eliminarlas luego
+  // Registrar las capas para mantener el control de memoria
   capasEnMapa.push({ marcador, circulo, indice });
+
+  // 7. --- CONTROL DE SOLAPAMIENTO (La mejor cobertura encima) ---
+  // Ordenamos el array de capas de menor a mayor prioridad tecnológica
+  // y llamamos a bringToFront() consecutivamente.
+  capasEnMapa
+    .sort((a, b) => (a.circulo.prioridadTecnologica || 0) - (b.circulo.prioridadTecnologica || 0))
+    .forEach(capa => {
+      if (capa.circulo && typeof capa.circulo.bringToFront === 'function') {
+        capa.circulo.bringToFront();
+      }
+    });
+    
+  // Asegurar que los pines de las antenas queden siempre por encima de las áreas difuminadas
+  capasEnMapa.forEach(capa => {
+    if (capa.marcador && typeof capa.marcador.bringToFront === 'function') {
+      capa.marcador.bringToFront();
+    }
+  });
+  circulo.addTo(mapa);                 // La cobertura se queda fija en el mapa base
+  marcador.addTo(grupoMarcadores);     // El marcador va al grupo conmutable
+
+  // Registrar las capas para mantener el control de memoria y edición
+  capasEnMapa.push({ marcador, circulo, indice });
+
+  // 7. --- CONTROL DE SOLAPAMIENTO (La mejor cobertura encima) ---
+  capasEnMapa
+    .sort((a, b) => (a.circulo.prioridadTecnologica || 0) - (b.circulo.prioridadTecnologica || 0))
+    .forEach(capa => {
+      if (capa.circulo && typeof capa.circulo.bringToFront === 'function') {
+        capa.circulo.bringToFront();
+      }
+    });
+    
+  // Asegurar que los pines queden por encima de las coberturas (solo si el grupo está visible)
+  if (mapa.hasLayer(grupoMarcadores)) {
+    capasEnMapa.forEach(capa => {
+      if (capa.marcador && typeof capa.marcador.bringToFront === 'function') {
+        capa.marcador.bringToFront();
+      }
+    });
+  }
 }
 
 /* ================================================
